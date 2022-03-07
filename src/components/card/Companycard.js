@@ -15,7 +15,8 @@ const Heading = styled.h5`
 color: red;
 `;
 
-export default function MultiActionAreaCard() {
+export default function MultiActionAreaCard(details) {
+    // console.log(details);
     return (
         <Container>
 
@@ -29,16 +30,14 @@ export default function MultiActionAreaCard() {
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                            <Heading>
-                            Anil kumar
-                            </Heading>
+                            <Heading>{details.details.username}</Heading>
                         </Typography>
                         <div class="container">
                             <div class="row">
                                 <div class="col">
-                                    <h6>profit : 20000</h6>
-                                    <h6>equity : 30</h6>
-                                    <h6>evolution : 6000000</h6>
+                                    <h6>profit : {details.details.profit}</h6>
+                                    <h6>equity : {details.details.equity}</h6>
+                                    <h6>evolution : {details.details.evolution}</h6>
                                 </div>
                                 
                                 
