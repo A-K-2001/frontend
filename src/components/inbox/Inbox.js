@@ -2,10 +2,11 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { Inboxitem } from '../Masg/inbox item/Inboxitem'
+import {format} from "timeago.js"
 
 export const Inbox = (conversation,active) => {
 
-    // console.log(conversation.active);
+    // console.log(conversation.conversation._id);
 
     // console.log(conversation.conversation.members);
 
@@ -17,6 +18,7 @@ export const Inbox = (conversation,active) => {
     // console.log(auser);
 
     const [user, setUser] = useState({});
+    const [last, setLast] = useState({});
 
     useEffect(()=>{
         const auser = conversation.conversation.members.find((m)=>m!==cuser);
@@ -40,15 +42,34 @@ export const Inbox = (conversation,active) => {
 
     },[cuser,conversation]);
 
+    useEffect(()=>{
+        const id = conversation.conversation._id;
+            const getuser = async()=>{
+                try{
+                       const res = await axios.get("/api/message/"+id);
+                        setLast(res.data[res.data.length-1]);
+                       
+                }catch(err){
+                    console.log(err);
+                }
+            };
+            getuser();
+
+    },[conversation]);
+
+
+
+
+
+
     return (
         <div>
             <div class={conversation.active?"chat_list active_chat" :"chat_list"}>
                 <div class="chat_people">
                     <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil" /> </div>
                     <div class="chat_ib">
-                        <h5>{user?.username} <span class="chat_date">Dec 5</span></h5>
-                        <p>Test, which is a new approach to have all solutions
-                            astrology under one roof.</p>
+                        <h5>{user?.username} <span class="chat_date">{format(last?.createdAt)}</span></h5>
+                        <p>{last?.text}</p>
                     </div>
                 </div>
             </div>
