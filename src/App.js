@@ -11,6 +11,7 @@ import Register from './pages/register/Register';
 import Investorregister from './pages/register/Investorregister';
 import Home from './pages/homepage/Home';
 import Chat from './pages/chat/Chat';
+import { useSelector } from 'react-redux';
 
 
 
@@ -18,7 +19,7 @@ import Chat from './pages/chat/Chat';
 
 function App() {
   
-  const user = true
+  const user = useSelector(state => state.user.currentUser);
 
   return (
 
@@ -28,10 +29,10 @@ function App() {
       <Header></Header>
       <Routes>
          <Route path="/" element={<Home/>} />
-
-        <Route path="/login" element={<Login />} />
-        <Route path="/login/investor" element={<Investorlogin />} />
-        <Route path="/login/company" element={<Companylogin />} />
+       
+        <Route path="/login" element={user?<Home/>:<Login />} />
+        <Route path="/login/investor" element={user?<Home/>:<Investorlogin />} />
+        <Route path="/login/company" element={user?<Home/>:<Companylogin />} />
         <Route path='/register' element={<Register/>}/>
         <Route path="/register/company" element={<Companyregister />} />
         <Route path="/register/investor" element={<Investorregister />} />

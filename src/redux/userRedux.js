@@ -33,6 +33,10 @@ const userSlice = createSlice({
             state.error =true;
         },
 
+        logout:(state)=>{
+            state.currentUser=null;
+        },
+
 
         // get all user
         getuserStart: (state) => {
@@ -58,7 +62,7 @@ const userSlice = createSlice({
     },
 });
 
-export const { loginStart,loginSuccess,loginFailure ,getuserFailure,getuserStart,getuserSuccess} = userSlice.actions;
+export const { loginStart,loginSuccess,loginFailure,logout ,getuserFailure,getuserStart,getuserSuccess} = userSlice.actions;
 export default userSlice.reducer;
 
      
