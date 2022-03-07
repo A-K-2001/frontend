@@ -1,10 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
+import Investorlogin from "../pages/login/Investorlogin";
 
 const userSlice = createSlice({
     name: "user",
     initialState: {
         currentUser:null,
+        _id:"6223356252ffdde4a05e8e3b",
         users:[],
+        // type:null,
+        type:"in",
         isFetching:false,
         error:false
     },
@@ -16,6 +20,13 @@ const userSlice = createSlice({
         loginSuccess:(state,action)=>{
             state.isFetching=false;
             state.currentUser=action.payload;
+            const amount = action.payload.amount;
+            console.log(action.payload.amount);
+            if(amount){
+                state.type= "in";
+            }else{
+                state.type="co";
+            }
         },
         loginFailure:(state)=>{
             state.isFetching =false;
@@ -32,6 +43,7 @@ const userSlice = createSlice({
         getuserSuccess: (state, action) => {
             state.isFetching = false;
             state.users = action.payload;
+
             // console.log(action.payload);
             // console.log(state.products);
 

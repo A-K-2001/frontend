@@ -1,5 +1,6 @@
 import { loginFailure,loginStart,loginSuccess  ,getuserFailure,getuserStart,getuserSuccess } from "./userRedux";
 import {publicRequest} from "../requestMethods"
+import { useSelector } from "react-redux";
 
 
 export const logincompany = async (dispatch ,user )=>{
@@ -8,7 +9,8 @@ export const logincompany = async (dispatch ,user )=>{
     try{
         
         const res = await publicRequest.post("/auth/companylogin",user);
-        
+
+       
         //  console.log(res);
         
         dispatch(loginSuccess(res.data));

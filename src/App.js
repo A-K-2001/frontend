@@ -10,6 +10,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import Register from './pages/register/Register';
 import Investorregister from './pages/register/Investorregister';
 import Home from './pages/homepage/Home';
+import Chat from './pages/chat/Chat';
 
 
 
@@ -27,12 +28,14 @@ function App() {
       <Header></Header>
       <Routes>
          <Route path="/" element={<Home/>} />
+
         <Route path="/login" element={<Login />} />
         <Route path="/login/investor" element={<Investorlogin />} />
         <Route path="/login/company" element={<Companylogin />} />
         <Route path='/register' element={<Register/>}/>
         <Route path="/register/company" element={<Companyregister />} />
         <Route path="/register/investor" element={<Investorregister />} />
+        <Route path="/chat" element={<Chat></Chat>}/>
 
 
         
