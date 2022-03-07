@@ -1,5 +1,5 @@
 import { Button } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom'
 import {
@@ -7,6 +7,8 @@ import {
     Row,
     Col
 } from 'react-bootstrap'
+import { logincompany, logininvestor } from '../../redux/apiCalls';
+import { useDispatch } from 'react-redux';
 
 
 
@@ -55,17 +57,28 @@ const Input = styled.input`
 const Investorlogin = () => {
 
 
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
+    
+
+    const dispatch = useDispatch();
+
+
+    const handleClick = (e)=>{
+        e.preventDefault();
+        logininvestor(dispatch,{username,password});
+    };
 
     return <Div>
         
         <FormC>
 
-                    investor
-
+                Investor
             <For>
-                    <Input  placeholder='Email' />
-                    <Input  placeholder='Password' />
-                    <Button variant="outlined">Login</Button>
+                    <Input  placeholder='username' onChange={(e)=>setUsername(e.target.value)} />
+                    <Input  placeholder='Password' onChange={(e)=>setPassword(e.target.value)}/>
+                    <Button variant="outlined" onClick={handleClick}>Login</Button>
                     <Col style={{ marginBottom: '80px' }}>
                     New Customer? Register
                     </Col>

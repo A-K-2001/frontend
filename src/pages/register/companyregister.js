@@ -1,6 +1,12 @@
 import React from 'react'
+import { Button } from '@mui/material';
+import {
+    Form,
+    Row,
+    Col
+} from 'react-bootstrap'
 
-
+import styled from 'styled-components';
 
 const Div = styled.div`
 
@@ -44,12 +50,11 @@ const Input = styled.input`
 
 
 
-const companyregister = () => {
+const Companyregister = () => {
     return (
         <div><FormC>
 
-            investor
-
+            company register
             <For>
                 <Input placeholder='Email' />
                 <Input placeholder='Password' />
@@ -63,4 +68,4 @@ const companyregister = () => {
     )
 }
 
-export default companyregister
+export default Companyregister
