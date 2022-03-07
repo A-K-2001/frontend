@@ -15,7 +15,9 @@ const Chat = () => {
     const [text, setText] = useState("");
     const scrollref = useRef();
 
-    const user = useSelector(state => state.user._id);
+    const user = useSelector(state => state.user.currentUser._id);
+
+    // console.log(user);
 
 
     useEffect(() => {

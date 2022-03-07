@@ -5,8 +5,8 @@ const userSlice = createSlice({
     name: "user",
     initialState: {
         currentUser:null,
-        _id:"6223356252ffdde4a05e8e3b",
-        users:[],
+        // _id:"6223356252ffdde4a05e8e3b",
+        // users:[],
         // type:null,
         type:"in",
         isFetching:false,

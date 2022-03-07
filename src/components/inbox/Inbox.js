@@ -10,12 +10,13 @@ export const Inbox = (conversation,active) => {
 
     // console.log(conversation.conversation.members);
 
+   
+    const cuser = useSelector(state => state.user.currentUser._id);
 
-    const cuser = useSelector(state=>state.user._id);
     const type  = useSelector(state=>state.user.type);
 
     // const auser = conversation.conversation.members.find((m)=>m!==cuser);
-    // console.log(auser);
+    // console.log(cuser);
 
     const [user, setUser] = useState({});
     const [last, setLast] = useState({});
