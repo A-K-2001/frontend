@@ -72,6 +72,7 @@ const Investorlogin = () => {
 
     return <Div>
         
+        
         <FormC>
 
                 Investor

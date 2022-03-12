@@ -24,7 +24,7 @@ const Chat = () => {
     // console.log(user);
 
     useEffect(() => {
-        socket.current = io("ws://localhost:5000");
+        socket.current = io("ws://letsgroww.herokuapp.com");
         socket.current.on("getMessage",(data)=>{
 
             setArrivalMessage({
