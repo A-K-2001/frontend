@@ -74,7 +74,7 @@ const Header = () => {
           ) : (
             <LinkContainer className={`${
                 userLogin ? "remove-space" : "add-space cart nav-cal"
-              } `} to="/login/investor">
+              } `} to="/login">
               <Nav.Link className="login nav-cal">SIGN IN</Nav.Link>
             </LinkContainer>
           )}
