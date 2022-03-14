@@ -1,113 +1,86 @@
+import React from 'react'
+import styled from 'styled-components'
+
+import Card from '@mui/material/Card';
+import Box from '../../components/Box/Box';
+import "./login.css"
+
+const Login = () => {
+
+
+  const Boxx = styled.div`
+  /* height: 10%;
+  width: 10%; */
+  margin: 10%;
+  /* padding: 25px 35px; */
+
+  margin-top: 16%;
+  margin-bottom: 16%;
+  margin-left: 20%;
+  margin-right: 20%;
+
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 25px #dde2e7;
+  border-radius: 20px;
+  text-align: center;
+  background-color: #feffde !important;
+
+
+
+`;
+
+
+const Img = styled.img`
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+`;
+
+const Heading = styled.h1`
+
+    margin-top: 5%;
+
+`;
+
+
+
+  return (
+    <div>
+
+      <div class="row g-0">
+
+      <div class="col-sm-12 col-lg-12 coll">
+        <Heading>you are....</Heading>
+      </div>
+
+
+        <div class="col-sm-12 col-lg-6 coll">
+        
+
+            <Boxx>
+              <Img src='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAHBhUSEhMVFRUXFhYVGRYVGBUaGBkXGBYWGhoaGRUYISggGh0mGxgYITMjJTUrMDIuFx82ODY4OSotLisBCgoKDQ0OFw8PFS0dFRkrKysrKzcrKys3LSsrKystKy0rNystKzcrNy03Ky0tLS03KystKystKysrKysrKysrK//AABEIAOEA4QMBIgACEQEDEQH/xAAcAAEAAwEBAQEBAAAAAAAAAAAABgcIBQQBAgP/xABJEAABAwEFBAUGCggEBwAAAAABAAIDEQQFBhIhBzFBYRMiUXGBMlJygpGhFBcjU2KSk7HB0RVCQ2NzorLSCDNUZCQlNTaDo8L/xAAWAQEBAQAAAAAAAAAAAAAAAAAAAQL/xAAYEQEBAQEBAAAAAAAAAAAAAAAAARFBMf/aAAwDAQACEQMRAD8AvFERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERARF4r2vWC5rC6aeRscbd7ne4ADUnkNUHtRVLfG2uKMkWWzOk+nK7IPBgq720UUtO169pn1aYIx2NiJ973FXE1oVFnmz7Xb3ifUugeOx0X4scFLLj21RSODbXZ3R/vIjnaOZYesPDMoatpF5LrvOG9rE2WCRskbtzmnTuPEHkdV60UREQEREBERAREQEREBERAREQEREBERAREQEREArOG1fET79xVJHmPQ2dxiY3hmbUPfTtJqO5o5q0Nr2LH4duVsULss05LQ4b2RtpncOZqGjvJ4LPm9WJRERVBERBI8D4umwjeokbV0TiOli85vnNHB44HwK0zY7Uy22Vskbg5j2h7XDcWuFQR4LIavzYXeZtuEXRO/YSuYPQcGvHvc4eClWLGREUUREQEREBERAREQEREBERAREQEREBERAREQUPt6eTi2EcBZmkd5llr9zfYojhDDE+LL16GEtbRud73Vo1taVoN5J3D8l19q2JIsR4mrE0hsIdDnJ/zC17qkDg2tadqkP+H7/rFr/hQ/1yKs9f2+JCX/Ws+xP96+/EhL/rWfYn+9XOii4pj4kJf9az7E/3r8u2IShultZXnC7786ulEMZLvu6prjvR9nmAEjDQ01BqAQWniCCCrc/w+j/ldrP75g9kY/NQvbJ/39L6EX9AXd2G4kisFsfYXtId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' ></Img>
+              <h3>Investor</h3>
+
+            </Boxx>
+     
+        
+        </div>
+        <div class="col-sm-12 col-lg-6 coll ">
+         
+         
+            <Boxx>
+              <Img src='data:image/png;base64,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 '></Img>
+              <h3> Company</h3>
+        
+            </Boxx>
+            
+          
+        </div>
+
+      </div>
 
    
-import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
+    </div>
+  )
 }
 
-const theme = createTheme();
-
-export default function SignIn() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
-
-  return (
-    <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign in
-          </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Sign In
-            </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
-            </Grid>
-          </Box>
-        </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
-      </Container>
-    </ThemeProvider>
-  );
-}
+export default Login    

@@ -21,8 +21,8 @@ const Header = () => {
   return (
     <Navbar collapseOnSelect expand="lg" fixed="sticky">
       <LinkContainer to="/">
-        <Navbar.Brand className="nav-cal">
-          <Image className="logoimg" width="80px" src="https://media.istockphoto.com/vectors/handshake-sign-in-the-circle-on-white-background-vector-illustration-vector-id1141219682?k=20&m=1141219682&s=612x612&w=0&h=IdYdsGuPtnie5wgKycEjGrtCbi48O4g0yUK1B5Zzjhs=" />
+        <Navbar.Brand className="nav-cal ">
+          <Image  width="80px" src="logo.jpeg" />
         </Navbar.Brand>
       </LinkContainer>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
