@@ -6,16 +6,12 @@ import { logout } from '../../redux/userRedux'
 
 const Home = () => {
 
-  const dispatch = useDispatch();
-  const handleClick=(e)=>{
-    dispatch(logout());
-  };
+ 
   return (
 
   
     <div>
     
-    <Button variant="outlined" onClick={handleClick}>logout</Button>
 
     <List></List></div>
   )
