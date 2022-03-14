@@ -10,7 +10,11 @@ import {
 import { logincompany, logininvestor } from '../../redux/apiCalls';
 import { useDispatch } from 'react-redux';
 
-
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormHelperText from '@mui/material/FormHelperText';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 
 
@@ -78,7 +82,12 @@ const Companyregister = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
+    const [gender, setGender] = useState('')
 
+
+    const handleChangegender = (event) => {
+        setGender(event.target.value);
+    }
 
     const dispatch = useDispatch();
 
@@ -95,15 +104,46 @@ const Companyregister = () => {
         <FormC>
 
             <Heading>Company</Heading>
-         
-                <Input placeholder='username' onChange={(e) => setUsername(e.target.value)} />
-                <Input type="password" placeholder='Password' onChange={(e) => setPassword(e.target.value)} />
-                <Buttonn variant="outlined" onClick={handleClick}>Login</Buttonn>
-                <Colm >
-                    New Customer? Register
-                </Colm>
 
-           
+            <Input placeholder='username' onChange={(e) => setUsername(e.target.value)} />
+            <Input placeholder='Email' />
+            <Input type="password" placeholder='Password' onChange={(e) => setPassword(e.target.value)} />
+
+
+            <FormControl sx={{ m: 1, minWidth: 120 }}>
+                <InputLabel id="demo-simple-select-helper-label">Gender</InputLabel>
+                <Select
+                    labelId="demo-simple-select-helper-label"
+                    id="demo-simple-select-helper"
+                    value={gender}
+                    label="Gender"
+                    onChange={handleChangegender}
+                >
+                    <MenuItem value="">
+                        <em>None</em>
+                    </MenuItem>
+                    <MenuItem value={'M'}>Male</MenuItem>
+                    <MenuItem value={'F'}>Female</MenuItem>
+                   
+                </Select>
+                <FormHelperText>Yearly profit</FormHelperText>
+
+            </FormControl>
+
+
+            <Input placeholder='Category' />
+            <Input placeholder='Sales' />
+            <Input placeholder='Profit' />
+            <Input placeholder='Equity' />
+            <Input placeholder='Year' />
+            <Input placeholder='Evolution' />
+
+            <Buttonn variant="outlined" onClick={handleClick}>Register</Buttonn>
+            <Colm >
+                You will get an otp on your eamil id to verify your account...
+            </Colm>
+
+
         </FormC>
     </Div>;
 };
