@@ -1,7 +1,7 @@
 import { Button } from '@mui/material';
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import {
     Form,
     Row,
@@ -15,6 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import axios from 'axios';
 
 
 
@@ -83,6 +84,10 @@ const Investorregister = () => {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("")
+    const [category, setCategory] = useState("")
+    const [amount, setAmount] = useState("")
+ 
 
         
         
@@ -99,11 +104,45 @@ const Investorregister = () => {
     }
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+
+    const [data, setData] = useState([]);
 
 
     const handleClick = (e) => {
-        e.preventDefault();
-        // logininvestor(dispatch, { username, password });
+        e.preventDefault();  
+      
+        const register = async ()=>{
+
+            try{
+
+                    const res = await axios.post("/api/auth/investorregister",{
+                        username: username,
+                        email: email,
+                        password:password,
+                        category: category,
+                        amount: amount,
+                        gender:gender,
+                        investedbefore:investedbefore,
+                    });
+                 
+                    // console.log(res.status);
+                  if(res.status === 200){
+
+                     navigate("/login/investor");
+                    
+                    }
+                    
+                    setData(res.data);
+
+            }catch(err){
+                console.log(err);
+            };
+        };
+        register();
+
+
     };
 
    
@@ -117,7 +156,7 @@ const Investorregister = () => {
          
                 
             <Input placeholder='username' onChange={(e) => setUsername(e.target.value)} />
-            <Input placeholder='Email' />
+            <Input placeholder='Email' onChange={(e) => setEmail(e.target.value)} />
             <Input type="password" placeholder='Password' onChange={(e) => setPassword(e.target.value)} />
 
 
@@ -142,8 +181,8 @@ const Investorregister = () => {
             </FormControl>
 
 
-            <Input placeholder='Category' />
-            <Input placeholder='Amount' />
+            <Input placeholder='Category' onChange={(e) => setCategory(e.target.value)}/>
+            <Input placeholder='Amount' onChange={(e) => setAmount(e.target.value)}/>
            
 
             

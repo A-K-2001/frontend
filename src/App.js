@@ -12,6 +12,7 @@ import Investorregister from './pages/register/Investorregister';
 import Home from './pages/homepage/Home';
 import Chat from './pages/chat/Chat';
 import { useSelector } from 'react-redux';
+import Otp from './pages/otp/Otp';
 
 
 
@@ -37,6 +38,8 @@ function App() {
         <Route path="/register/company" element={<Companyregister />} />
         <Route path="/register/investor" element={<Investorregister />} />
         <Route path="/chat" element={<Chat></Chat>}/>
+        <Route path="/otp" element={<Otp></Otp>}/>
+
 
 
         
