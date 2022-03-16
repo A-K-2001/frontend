@@ -28,7 +28,7 @@ justify-content: center;
 `;
 
 
-const FormC = styled.div`
+const FormC = styled.form`
     background: #FFFFFF 0% 0% no-repeat padding-box;
     margin-bottom: 10%;
     margin-top: 10%;
@@ -157,7 +157,7 @@ const Investorregister = () => {
                 
             <Input placeholder='username' onChange={(e) => setUsername(e.target.value)} />
             <Input placeholder='Email' onChange={(e) => setEmail(e.target.value)} />
-            <Input type="password" placeholder='Password' onChange={(e) => setPassword(e.target.value)} />
+            <Input type="password" autoComplete='true' placeholder='Password' onChange={(e) => setPassword(e.target.value)} />
 
 
             <FormControl sx={{ m: 1, minWidth: 120 }}>

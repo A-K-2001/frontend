@@ -22,7 +22,7 @@ const Header = () => {
     <Navbar collapseOnSelect expand="lg" fixed="sticky">
       <LinkContainer to="/">
         <Navbar.Brand className="nav-cal ">
-          <Image  width="80px" src="logo.jpeg" />
+          <Image  width="80px" src="../../../public/logo.jpeg" />
         </Navbar.Brand>
       </LinkContainer>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -72,11 +72,17 @@ const Header = () => {
               </LinkContainer>
             </NavDropdown>
           ) : (
+            <>
+
             <LinkContainer className={`${
                 userLogin ? "remove-space" : "add-space cart nav-cal"
               } `} to="/login">
               <Nav.Link className="login nav-cal">SIGN IN</Nav.Link>
             </LinkContainer>
+            <LinkContainer to="/register">
+            <Nav.Link className="nav-cal">REGISTER</Nav.Link>
+          </LinkContainer>
+            </>
           )}
           {/* {userInfo && userInfo.isAdmin && (
             <NavDropdown title="ADMIN" id="adminmenu">

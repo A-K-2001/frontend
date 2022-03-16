@@ -109,7 +109,14 @@ const Otp = () => {
                 
                 if(res.status === 200){
 
-                    navigate("/login/investor");
+                    if(type == "in"){
+
+                        
+                        navigate("/login/investor");
+                    }
+                    else{
+                        navigate("/login/company");
+                    }
                    
                    }
 

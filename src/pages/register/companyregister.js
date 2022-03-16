@@ -1,7 +1,7 @@
 import { Button } from '@mui/material';
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import {
     Form,
     Row,
@@ -15,6 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import axios from 'axios';
 
 
 
@@ -25,7 +26,7 @@ justify-content: center;
 `;
 
 
-const FormC = styled.div`
+const FormC = styled.form`
     background: #FFFFFF 0% 0% no-repeat padding-box;
     margin-bottom: 10%;
     margin-top: 10%;
@@ -79,8 +80,17 @@ const Colm = styled.div`
 const Companyregister = () => {
 
 
+
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("")
+    const [category, setCategory] = useState("")
+    const [sales, setSales] = useState("")
+    const [profit, setProfit] = useState("")
+    const [equity, setEquity] = useState("")
+    const [year, setYear] = useState("")
+    const [evolution, setEvolution] = useState("")
+
 
     const [gender, setGender] = useState('')
 
@@ -90,11 +100,39 @@ const Companyregister = () => {
     }
 
     const dispatch = useDispatch();
-
+    const navigate = useNavigate();
 
     const handleClick = (e) => {
         e.preventDefault();
-        // logininvestor(dispatch, { username, password });
+        const Register = async()=>{
+
+            try{
+                    const res = await axios.post("/api/auth/companyregister",{
+                        username:username,
+                        email:email,
+                        password:password,
+                        category:category,
+                        sales:sales,
+                        profit:profit,
+                        evolution:evolution,
+                        year:year,
+                        gender:gender,
+                        equity:equity,
+                    });
+
+                    if(res.status == 200){
+                        navigate("/login/company");
+                    }
+
+                    // console.log(res);
+
+
+            }catch(err){
+                console.log(err);
+            }
+
+        };
+        Register();
     };
 
 
@@ -105,9 +143,9 @@ const Companyregister = () => {
 
             <Heading>Company</Heading>
 
-            <Input placeholder='username' onChange={(e) => setUsername(e.target.value)} />
-            <Input placeholder='Email' />
-            <Input type="password" placeholder='Password' onChange={(e) => setPassword(e.target.value)} />
+            <Input placeholder='username'  onChange={(e) => setUsername(e.target.value)} />
+            <Input placeholder='Email'onChange={(e) => setEmail(e.target.value)} />
+            <Input type="password" autoComplete='true' placeholder='Password' onChange={(e) => setPassword(e.target.value)} />
 
 
             <FormControl sx={{ m: 1, minWidth: 120 }}>
@@ -131,12 +169,12 @@ const Companyregister = () => {
             </FormControl>
 
 
-            <Input placeholder='Category' />
-            <Input placeholder='Sales' />
-            <Input placeholder='Profit' />
-            <Input placeholder='Equity' />
-            <Input placeholder='Year' />
-            <Input placeholder='Evolution' />
+            <Input placeholder='Category' onChange={(e) => setCategory(e.target.value)}/>
+            <Input placeholder='Sales'onChange={(e) => setSales(e.target.value)} />
+            <Input placeholder='Profit' onChange={(e) => setProfit(e.target.value)}/>
+            <Input placeholder='Equity' onChange={(e) => setEquity(e.target.value)}/>
+            <Input placeholder='Year' onChange={(e) => setYear(e.target.value)}/>
+            <Input placeholder='Evolution'onChange={(e) => setEvolution(e.target.value)} />
 
             <Buttonn variant="outlined" onClick={handleClick}>Register</Buttonn>
             <Colm >
