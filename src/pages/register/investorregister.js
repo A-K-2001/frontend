@@ -20,6 +20,19 @@ import axios from 'axios';
 
 
 
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import app from '../../firebase/firebase';
+
+
+const storage = getStorage(app);
+
+
+
+
+
+
+
+
 
 const Div = styled.div`
 display: flex;
@@ -87,12 +100,27 @@ const Investorregister = () => {
     const [email, setEmail] = useState("")
     const [category, setCategory] = useState("")
     const [amount, setAmount] = useState("")
- 
+    
+    const [image, setImage] = useState(null);
+    const [url, setUrl] = useState("");
 
         
         
     const [gender, setGender] = useState('')
     const [investedbefore, setinvestedbefore] = useState('')
+
+
+
+
+    
+    const handleimage = (e) => {
+
+        if (e.target.files[0]) {
+            setImage(e.target.files[0]);
+        }
+
+    }
+
 
 
     const handleChangegender = (event) => {
@@ -112,6 +140,65 @@ const Investorregister = () => {
 
     const handleClick = (e) => {
         e.preventDefault();  
+
+
+        const fileName = new Date().getTime() + image.name;
+
+
+        const storageRef = ref(storage, fileName);
+        // console.log(fileName);
+        const uploadTask = uploadBytesResumable(storageRef, image);
+
+        // Register three observers:
+        // 1. 'state_changed' observer, called any time the state changes
+        // 2. Error observer, called on failure
+        // 3. Completion observer, called on successful completion
+        uploadTask.on('state_changed',
+            (snapshot) => {
+                // Observe state change events such as progress, pause, and resume
+                // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+                const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                console.log('Upload is ' + progress + '% done');
+                switch (snapshot.state) {
+                    case 'paused':
+                        console.log('Upload is paused');
+                        break;
+                    case 'running':
+                        console.log('Upload is running');
+                        break;
+                    default:
+                }
+            },
+            (error) => {
+
+            },
+            () => {
+                // Handle successful uploads on complete
+                // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+                getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                   
+                   setUrl(downloadURL);
+
+                   register();
+
+
+
+
+
+                   
+
+                });
+            }
+        );
+
+
+
+
+
+
+
+
+
       
         const register = async ()=>{
 
@@ -120,6 +207,7 @@ const Investorregister = () => {
                     const res = await axios.post("/api/auth/investorregister",{
                         username: username,
                         email: email,
+                        profileImg: url,
                         password:password,
                         category: category,
                         amount: amount,
@@ -140,7 +228,7 @@ const Investorregister = () => {
                 console.log(err);
             };
         };
-        register();
+     
 
 
     };
@@ -184,6 +272,7 @@ const Investorregister = () => {
             <Input placeholder='Category' onChange={(e) => setCategory(e.target.value)}/>
             <Input placeholder='Amount' onChange={(e) => setAmount(e.target.value)}/>
            
+            <input type="file" onChange={handleimage} ></input>
 
             
             <FormControl sx={{ m: 1, minWidth: 120 }}>

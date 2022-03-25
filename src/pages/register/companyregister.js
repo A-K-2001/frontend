@@ -19,6 +19,21 @@ import axios from 'axios';
 
 
 
+
+
+
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import app from '../../firebase/firebase';
+
+
+const storage = getStorage(app);
+
+
+
+
+
+
+
 const Div = styled.div`
 display: flex;
 justify-content: center;
@@ -90,6 +105,19 @@ const Companyregister = () => {
     const [equity, setEquity] = useState("")
     const [year, setYear] = useState("")
     const [evolution, setEvolution] = useState("")
+    const [image, setImage] = useState(null);
+    const [url, setUrl] = useState("");
+
+
+    const handleimage = (e) => {
+
+        if (e.target.files[0]) {
+            setImage(e.target.files[0]);
+        }
+
+    }
+
+
 
 
     const [gender, setGender] = useState('')
@@ -102,37 +130,104 @@ const Companyregister = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+
+
     const handleClick = (e) => {
         e.preventDefault();
-        const Register = async()=>{
 
-            try{
-                    const res = await axios.post("/api/auth/companyregister",{
-                        username:username,
-                        email:email,
-                        password:password,
-                        category:category,
-                        sales:sales,
-                        profit:profit,
-                        evolution:evolution,
-                        year:year,
-                        gender:gender,
-                        equity:equity,
-                    });
-
-                    if(res.status == 200){
-                        navigate("/login/company");
-                    }
-
-                    // console.log(res);
+        const fileName = new Date().getTime() + image.name;
 
 
-            }catch(err){
+        const storageRef = ref(storage, fileName);
+        // console.log(fileName);
+        const uploadTask = uploadBytesResumable(storageRef, image);
+
+        // Register three observers:
+        // 1. 'state_changed' observer, called any time the state changes
+        // 2. Error observer, called on failure
+        // 3. Completion observer, called on successful completion
+        uploadTask.on('state_changed',
+            (snapshot) => {
+                // Observe state change events such as progress, pause, and resume
+                // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+                const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                console.log('Upload is ' + progress + '% done');
+                switch (snapshot.state) {
+                    case 'paused':
+                        console.log('Upload is paused');
+                        break;
+                    case 'running':
+                        console.log('Upload is running');
+                        break;
+                    default:
+                }
+            },
+            (error) => {
+
+            },
+            () => {
+                // Handle successful uploads on complete
+                // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+                getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                   
+                   setUrl(downloadURL);
+
+                   Register();
+
+
+
+
+
+                   
+
+                });
+            }
+        );
+
+
+       
+
+
+
+
+
+
+
+
+
+
+                const Register = async () => {
+
+            try {
+                const res = await axios.post("/api/auth/companyregister", {
+                    username: username,
+                    email: email,
+                    profileImg: url,
+                    password: password,
+                    category: category,
+                    sales: sales,
+                    profit: profit,
+                    evolution: evolution,
+                    year: year,
+                    gender: gender,
+                    equity: equity,
+                });
+
+                // console.log(url);
+
+                if (res.status == 200) {
+                    navigate("/login/company");
+                }
+
+                // console.log(res);
+
+
+            } catch (err) {
                 console.log(err);
             }
 
         };
-        Register();
+       
     };
 
 
@@ -143,8 +238,8 @@ const Companyregister = () => {
 
             <Heading>Company</Heading>
 
-            <Input placeholder='username'  onChange={(e) => setUsername(e.target.value)} />
-            <Input placeholder='Email'onChange={(e) => setEmail(e.target.value)} />
+            <Input placeholder='username' onChange={(e) => setUsername(e.target.value)} />
+            <Input placeholder='Email' onChange={(e) => setEmail(e.target.value)} />
             <Input type="password" autoComplete='true' placeholder='Password' onChange={(e) => setPassword(e.target.value)} />
 
 
@@ -162,19 +257,21 @@ const Companyregister = () => {
                     </MenuItem>
                     <MenuItem value={'M'}>Male</MenuItem>
                     <MenuItem value={'F'}>Female</MenuItem>
-                   
+
                 </Select>
                 <FormHelperText>Yearly profit</FormHelperText>
 
             </FormControl>
 
 
-            <Input placeholder='Category' onChange={(e) => setCategory(e.target.value)}/>
-            <Input placeholder='Sales'onChange={(e) => setSales(e.target.value)} />
-            <Input placeholder='Profit' onChange={(e) => setProfit(e.target.value)}/>
-            <Input placeholder='Equity' onChange={(e) => setEquity(e.target.value)}/>
-            <Input placeholder='Year' onChange={(e) => setYear(e.target.value)}/>
-            <Input placeholder='Evolution'onChange={(e) => setEvolution(e.target.value)} />
+            <Input placeholder='Category' onChange={(e) => setCategory(e.target.value)} />
+            <Input placeholder='Sales' onChange={(e) => setSales(e.target.value)} />
+            <Input placeholder='Profit' onChange={(e) => setProfit(e.target.value)} />
+            <Input placeholder='Equity' onChange={(e) => setEquity(e.target.value)} />
+            <Input placeholder='Year' onChange={(e) => setYear(e.target.value)} />
+            <Input placeholder='Evolution' onChange={(e) => setEvolution(e.target.value)} />
+
+            <input type="file" onChange={handleimage} ></input>
 
             <Buttonn variant="outlined" onClick={handleClick}>Register</Buttonn>
             <Colm >

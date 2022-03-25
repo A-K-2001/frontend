@@ -1,8 +1,11 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
-import { Nav, Navbar, NavDropdown, Image } from "react-bootstrap";
+import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import "./Header.css";
+
+// import "../../../public/logo.jpeg"
+
 
 // import { logout } from "./../../actions/userActions";
 import { logout } from '../../redux/userRedux'
@@ -22,7 +25,7 @@ const Header = () => {
     <Navbar collapseOnSelect expand="lg" fixed="sticky">
       <LinkContainer to="/">
         <Navbar.Brand className="nav-cal ">
-          <Image  width="80px" src="../../../public/logo.jpeg" />
+          <img  width="80px" src="logo.jpeg" />
         </Navbar.Brand>
       </LinkContainer>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />

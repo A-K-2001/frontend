@@ -13,6 +13,8 @@ import Home from './pages/homepage/Home';
 import Chat from './pages/chat/Chat';
 import { useSelector } from 'react-redux';
 import Otp from './pages/otp/Otp';
+import { Investorprofile } from './pages/profile/Investorprofile';
+import Comapanyprofile from './pages/profile/Comapanyprofile';
 
 
 
@@ -23,6 +25,8 @@ function App() {
 
   
   const user = useSelector(state => state.user.currentUser);
+  const type = useSelector(state=>state.user.type);
+
 
   return (
 
@@ -41,6 +45,7 @@ function App() {
         <Route path="/register/investor" element={<Investorregister />} />
         <Route path="/chat" element={<Chat></Chat>}/>
         <Route path="/otp" element={<Otp></Otp>}/>
+        <Route path="/profile" element={type=="in"?<Investorprofile/>:<Comapanyprofile/> }/>
 
 
 
