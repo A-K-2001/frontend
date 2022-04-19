@@ -9,23 +9,19 @@ import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import axios from 'axios';
+import Investorcard from '../card/Investorcard';
 
 
 
 const Filter = styled.div`
 justify-content: center;
 `;
+export const InvestorList = () => {
 
-
-
-const List = () => {
-
-
-
-  const [neww, setNeww] = useState('');
+    const [neww, setNeww] = useState('');
   const [equity, setEquity] = useState('')
-  const [profit, setProfit] = useState('')
-  const [evolution, setEvolution] = useState('')
+  
+
 
 
   const handleChangenew = (event) => {
@@ -33,7 +29,7 @@ const List = () => {
 
     const getcdata = async () => {
       try {
-        const res = await axios.get("/api/company?new=true");
+        const res = await axios.get("/api/investor?new=true");
         setCdata(res.data);
 
       } catch (err) {
@@ -44,15 +40,15 @@ const List = () => {
 
 
     setEquity('');
-    setProfit('');
-    setEvolution('');
+    
+
   };
 
   const handleChangeequity = (event) => {
     setEquity(event.target.value);
     const getcdata = async () => {
       try {
-        const res = await axios.get("/api/company?equity=" + event.target.value);
+        const res = await axios.get("/api/investor?equity=" + event.target.value);
         setCdata(res.data);
 
       } catch (err) {
@@ -63,48 +59,10 @@ const List = () => {
 
     setNeww('');
 
-    setProfit('');
-    setEvolution('');
   };
 
 
-  const handleChangeprofit = (event) => {
-    setProfit(event.target.value);
-    const getcdata = async () => {
-      try {
-        const res = await axios.get("/api/company?profit=" + event.target.value);
-        setCdata(res.data);
-
-      } catch (err) {
-        console.log(err);
-      };
-    };
-    getcdata();
-
-    setNeww('');
-    setEquity('');
-
-    setEvolution('');
-  };
-
-  const handleChangeevolution = (event) => {
-    setEvolution(event.target.value);
-    const getcdata = async () => {
-      try {
-        const res = await axios.get("/api/company?evolution=" + event.target.value);
-        setCdata(res.data);
-
-      } catch (err) {
-        console.log(err);
-      };
-    };
-    getcdata();
-
-    setNeww('');
-    setEquity('');
-    setProfit('');
-
-  };
+ 
 
   const [cdata, setCdata] = useState([]);
 
@@ -112,7 +70,7 @@ const List = () => {
 
     const getcdata = async () => {
       try {
-        const res = await axios.get("/api/company/");
+        const res = await axios.get("/api/investor/");
         setCdata(res.data);
 
       } catch (err) {
@@ -124,11 +82,9 @@ const List = () => {
   }, []);
 
 
-  // console.log(cdata);
-
   return (
     <div>
-      
+       
 
 
       <FormControl sx={{ m: 1, minWidth: 120 }}>
@@ -175,47 +131,7 @@ const List = () => {
 
       </FormControl>
 
-      <FormControl sx={{ m: 1, minWidth: 120 }}>
-        <InputLabel id="demo-simple-select-helper-label">profit</InputLabel>
-        <Select
-          labelId="demo-simple-select-helper-label"
-          id="demo-simple-select-helper"
-          value={profit}
-          label="profit"
-          onChange={handleChangeprofit}
-        >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={100000}>10 L</MenuItem>
-          <MenuItem value={300000}>30 L</MenuItem>
-          <MenuItem value={500000}>50 L</MenuItem>
-          <MenuItem value={1000000}>1 Cr</MenuItem>
-        </Select>
-        <FormHelperText>Yearly profit</FormHelperText>
-
-      </FormControl>
-
-      <FormControl sx={{ m: 1, minWidth: 120 }}>
-        <InputLabel id="demo-simple-select-helper-label">evolution</InputLabel>
-        <Select
-          labelId="demo-simple-select-helper-label"
-          id="demo-simple-select-helper"
-          value={evolution}
-          label="evolution"
-          onChange={handleChangeevolution}
-        >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={500000}>50 L</MenuItem>
-          <MenuItem value={1000000}>1 Cr</MenuItem>
-          <MenuItem value={10000000}>10 Cr</MenuItem>
-        </Select>
-        <FormHelperText>Net Evolution</FormHelperText>
-
-      </FormControl>
-
+     
 
 
       <br></br>
@@ -232,16 +148,14 @@ const List = () => {
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
           {
             cdata.map((c) => (
-              <Companycard details={c} />
+              <Investorcard details={c} />
             ))
           }
 
 
         </div>
       </div>
-      
+        
     </div>
   )
 }
-
-export default List

@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import {
     Form,
     Row,
-    Col
+    col
 } from 'react-bootstrap'
 import { logincompany, logininvestor } from '../../redux/apiCalls';
 import { useDispatch } from 'react-redux';
@@ -42,7 +42,7 @@ justify-content: center;
 
 
 const FormC = styled.form`
-    background: #FFFFFF 0% 0% no-repeat padding-box;
+    background-color: #FFFFFF 0% 0% no-repeat padding-box;
     margin-bottom: 10%;
     margin-top: 10%;
     box-shadow: 0px 0px 25px #dde2e7;
@@ -63,7 +63,7 @@ const Heading = styled.h1`
 
 
 const Input = styled.input`
-        background: #ffffff;
+    background-color: #ffffff;
     border: none;
     padding: 12px 20px;
     border-radius: 30px;
@@ -76,7 +76,7 @@ const Input = styled.input`
 
 const Buttonn = styled.button`
 margin-top: 5%;
-    background: #1F1F39 0% 0% no-repeat padding-box;
+    background-color: #1F1F39 0% 0% no-repeat padding-box;
     box-shadow: -2px -2px 6px #575f6b80;
     border-radius: 30px;
     display: inline-block;
@@ -87,7 +87,7 @@ margin-top: 5%;
     font-weight: 800;
 `;
 
-const Colm = styled.div`
+const Cm = styled.div`
     margin-top: 5%;
     margin-bottom: 5%;
 `;
@@ -299,9 +299,9 @@ const Investorregister = () => {
 
 
             <Buttonn variant="outlined" onClick={handleClick}>Register</Buttonn>
-            <Colm >
+            <Cm >
                 You will get an otp on your eamil id to verify your account...
-            </Colm>
+            </Cm>
 
            
         </FormC>

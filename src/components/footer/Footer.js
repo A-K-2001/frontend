@@ -2,14 +2,14 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Footerdiv = styled.div`
-    background-color: gray;
+    background-color: #feffde;
 
 `
 
 
 const Footer = () => {
   return (
-    <Footerdiv>copyrigt @ anil</Footerdiv>
+    <Footerdiv>copyright @ Let's Groww</Footerdiv>
   )
 }
 

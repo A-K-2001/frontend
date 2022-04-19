@@ -14,7 +14,7 @@ const Box = (h, w) => {
             box-shadow: 0px 0px 25px #dde2e7;
             border-radius: 20px;
             text-align: center;
-            background-color: #feffde !important;
+            background-Color: #feffde !important;
          
 
         

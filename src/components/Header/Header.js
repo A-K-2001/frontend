@@ -34,8 +34,8 @@ const Header = () => {
           <LinkContainer to="/">
             <Nav.Link className="nav-cal">HOME</Nav.Link>
           </LinkContainer>
-          <LinkContainer to="/farmer">
-            <Nav.Link className="nav-cal">FARMER</Nav.Link>
+          <LinkContainer to="/chat">
+            <Nav.Link className="nav-cal">CHAT</Nav.Link>
           </LinkContainer>
           <LinkContainer to="/consumer">
             <Nav.Link className="nav-cal">CONSUMER</Nav.Link>

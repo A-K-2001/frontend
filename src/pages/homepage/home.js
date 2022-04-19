@@ -1,25 +1,27 @@
 import { Button } from '@mui/material'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { InvestorList } from '../../components/list/InvestorList'
 import List from '../../components/list/List'
 import { logout } from '../../redux/userRedux'
 
 const Home = () => {
 
   
-  const verify = useSelector(state => state.user?.currentUser?.verifed);
-
+  const user = useSelector(state => state.user);
+  const type = user?.type;
+  console.log(type);
   const navigate = useNavigate();
 useEffect(()=>{
 
-  if(verify == false){
+  if(user?.currentUser?.verifed == false){
     navigate("/otp");
   }
 
 
 },[])
-  if(verify == false){
+  if(user?.currentUser?.verifed == false){
     navigate("/otp");
   }
 
@@ -29,8 +31,9 @@ useEffect(()=>{
   
     <div>
     
-
-    <List></List></div>
+    {type=="in"?<List/>:<InvestorList/>}
+    {/* <InvestorList></InvestorList> */}
+    </div>
   )
 }
 

@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import {
     Form,
     Row,
-    Col
+    C
 } from 'react-bootstrap'
 import { logincompany, logininvestor } from '../../redux/apiCalls';
 import { useDispatch } from 'react-redux';
@@ -70,7 +70,7 @@ margin-top: 5%;
     font-weight: 800;
 `;
 
-const Colm = styled.div`
+const Cm = styled.div`
     margin-top: 5%;
     margin-bottom: 5%;
 `;

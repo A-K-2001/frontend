@@ -60,11 +60,11 @@ export default function MultiActionAreaCard(details) {
 
     const handleclick = () => {
 
-        navigate(`companyprofile/${details.details._id}`)
+        navigate(`investorprofile/${details.details._id}`)
 
     }
 
-    // console.log(details);
+    // console.log(details.details);
     return (
         <Container>
 
@@ -78,9 +78,9 @@ export default function MultiActionAreaCard(details) {
                 <Details>
 
 
-                    <H2>profit : {details.details.profit}</H2>
-                    <H2>equity : {details.details.equity}</H2>
-                    <H2>evolution : {details.details.evolution}</H2>
+                    <H2>Amount : {details.details.amount}</H2>
+                    <H2>Gender : {details.details.gender}</H2>
+                    <H2>Category : {details.details.category} </H2>
                 </Details>
 
 

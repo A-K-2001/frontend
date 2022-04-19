@@ -47,7 +47,7 @@ const Login = () => {
 
                 <Form onSubmit={submitHandler}>
                     <Form.Group controlId='email'>
-                        <Form.Label>Email Address <span style={{ color: 'red' }}>*</span></Form.Label>
+                        <Form.Label>Email Address <span style={{ Color: 'red' }}>*</span></Form.Label>
                         <Form.Control
                             type="nic"
                             placeholder="Enter email address"
@@ -57,7 +57,7 @@ const Login = () => {
                         ></Form.Control>
                     </Form.Group>
                     <Form.Group controlId='password'>
-                        <Form.Label>Password <span style={{ color: 'red' }}>*</span></Form.Label>
+                        <Form.Label>Password <span style={{ Color: 'red' }}>*</span></Form.Label>
                         <Form.Control
                             type="password"
                             placeholder="Enter password"
@@ -66,11 +66,11 @@ const Login = () => {
                             onChange={(e) => setPassword(e.target.value)}
                         ></Form.Control>
                     </Form.Group>
-                    <Button type="submit" style={{ backgroundColor: "#91C788", border: "none" }}>Sign In</Button>
+                    <Button type="submit" style={{ backgroundCor: "#91C788", border: "none" }}>Sign In</Button>
                 </Form>
                 <Row className='py-3'>
                     <Col style={{ marginBottom: '80px' }}>
-                        New Customer? <Link style={{ color: "#91C788" }}>Register</Link>
+                        New Customer? <Link style={{ Cor: "#91C788" }}>Register</Link>
                     </Col>
                 </Row>
             </FormContainer>
