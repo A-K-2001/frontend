@@ -138,11 +138,11 @@ export const InvestorList = () => {
 
 
       <Filter>
-        <input placeholder='Category'></input>
+        {/* <input placeholder='Category'></input>
 
         <Button variant="outlined" disabled>
           Disabled
-        </Button>
+        </Button> */}
       </Filter>
       <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">

@@ -37,25 +37,16 @@ const Header = () => {
           <LinkContainer to="/chat">
             <Nav.Link className="nav-cal">CHAT</Nav.Link>
           </LinkContainer>
-          <LinkContainer to="/consumer">
-            <Nav.Link className="nav-cal">CONSUMER</Nav.Link>
+          <LinkContainer to="/profile">
+            <Nav.Link className="nav-cal">PROFILE</Nav.Link>
           </LinkContainer>
           <LinkContainer to="login?redirect=supplier">
-            <Nav.Link className="nav-cal">SUPPLIER</Nav.Link>
+            <Nav.Link className="nav-cal"></Nav.Link>
           </LinkContainer>
           <LinkContainer to="/news">
-            <Nav.Link className="nav-cal">FEEDS</Nav.Link>
+            <Nav.Link className="nav-cal"></Nav.Link>
           </LinkContainer>
-          {/* <LinkContainer to="/cart">
-            <Nav.Link
-              className={`${
-                userLogin ? "remove-space" : "add-space cart nav-cal"
-              } `}
-            >
-              <i className="fas fa-shopping-cart"></i>
-              CART
-            </Nav.Link>
-          </LinkContainer> */}
+     
           {userLogin ? (
             <NavDropdown  className={`${
                 userLogin ? "remove-space" : "add-space cart nav-cal"
@@ -65,9 +56,9 @@ const Header = () => {
                   <NavDropdown.Item>DASHBOARD</NavDropdown.Item>
                 </LinkContainer>
               )} */}
-              <LinkContainer to="/profile" >
+              {/* <LinkContainer to="/profile" >
                 <NavDropdown.Item>PROFILE</NavDropdown.Item>
-              </LinkContainer>
+              </LinkContainer> */}
               <LinkContainer to="/login/investor">
                 <NavDropdown.Item onClick={logoutHandler}>
                   LOGOUT

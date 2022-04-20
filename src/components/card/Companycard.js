@@ -60,7 +60,7 @@ export default function MultiActionAreaCard(details) {
 
     const handleclick = () => {
 
-        navigate(`companyprofile/${details.details._id}`)
+        navigate(`/companyprofile/${details.details._id}`)
 
     }
 

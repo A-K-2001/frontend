@@ -16,6 +16,7 @@ import Otp from './pages/otp/Otp';
 import { Investorprofile } from './pages/profile/Investorprofile';
 import Comapanyprofile from './pages/profile/Comapanyprofile';
 import Company from './pages/profile/Company';
+import Profile from './pages/OwnProfile/Profile';
 
 
 
@@ -45,6 +46,8 @@ function App() {
         <Route path="/register/company" element={<Companyregister />} />
         <Route path="companyprofile/:id" element={<Company />} />
         <Route path="investorprofile/:id" element={<Investorprofile />} />
+        <Route path="/profile" element={<Profile />} />
+
 
 
         <Route path="/register/investor" element={<Investorregister />} />

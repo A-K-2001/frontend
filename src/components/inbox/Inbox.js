@@ -67,7 +67,7 @@ export const Inbox = (conversation,active) => {
         <div>
             <div class={conversation.active?"chat_list active_chat" :"chat_list"}>
                 <div class="chat_people">
-                    <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil" /> </div>
+                    <div class="chat_img"> <img src= {user?.profileImg} alt="sunil" /> </div>
                     <div class="chat_ib">
                         <h5>{user?.username} <span class="chat_date">{format(last?.createdAt)}</span></h5>
                         <p>{last?.text}</p>

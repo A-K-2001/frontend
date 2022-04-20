@@ -12,3 +12,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#root {
+
+  background: #ddffbc8e;
+  /* background-image: url("https://www.thebalance.com/thmb/7dsJGxZTatONVXqA49JishW0Mjs=/3000x2000/filters:fill(auto,1)/the-five-types-of-assets-you-might-own-when-you-invest-d636d9b641f24003ab0149b2fcf84aec.png"); */
+
+}

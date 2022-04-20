@@ -8,13 +8,13 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import { useSelector } from 'react-redux';
 
-const Company = () => {
+const Profile = () => {
 
     const Boxx = styled.div`
   /* height: 10%;
   width: 10%; */
   margin: 10%;
-  padding: 3%;
+  /* padding: 25px 35px; */
 
   margin-top: 16%;
   margin-bottom: 16%;
@@ -79,14 +79,14 @@ const Company = () => {
 
     }, [user]);
 
-    const cuser = useSelector(state => state.user.currentUser._id);
+    const cuser = useSelector(state => state.user.currentUser);
 
     const navigate = useNavigate();    
     const handleclick = async()=>{
 
         try {
 
-            const res = await axios.post("/api/conversation/", { receiverId:cuser , senderId: user });
+            const res = await axios.post("/api/conversation/", { receiverId:cuser?._id , senderId: user });
             
             if(res.status === 200){
 
@@ -116,8 +116,8 @@ const Company = () => {
 
                     <Boxx >
 
-                    <Img src= {info?.profileImg} ></Img>
-                        <h3>{info?.username}</h3>
+                        <Img src= {cuser?.profileImg} ></Img>
+                        <h3><strong>{cuser?.username}</strong></h3>
 
                     </Boxx>
 
@@ -125,28 +125,23 @@ const Company = () => {
                 </div>
                 <div class="col-sm-12 col-lg-6 coll ">
 
-
+                    
                     <Boxx   >
 
 
-                        {/* <p>{info?._id}</p> */}
-                        <p><strong>Email: </strong>{info?.email}</p>
-                        {/* <p><strong>Username: </strong>{info?.username}</p> */}
-                        <p><strong>Profit: </strong>{info?.profit}</p>
-                        <p><strong>Category: </strong>{info?.category}</p>
-                        <p><strong>Sales: </strong>{info?.sales}</p>
-                        <p><strong>Year: </strong>{info?.year}</p>
-                        <p><strong>Evolution: </strong>{info?.evolution}</p>
+                        <p><strong>ID: </strong>{cuser?._id}</p>
+                        <p><strong>EMAIL: </strong>{cuser?.email}</p>
+                        <p><strong>USERNAME: </strong>{cuser?.username}</p>
+                      
+                    
 
-
-
-                        <p><strong>Equity: </strong>{info?.equity}</p>
+                       
 
 
                     </Boxx>
 
 
-                <Button variant="outlined" onClick={handleclick}>Connect</Button>
+                <Button variant="outlined" >UPDATE</Button>
                 </div>
 
 
@@ -160,4 +155,4 @@ const Company = () => {
     )
 }
 
-export default Company
+export default Profile

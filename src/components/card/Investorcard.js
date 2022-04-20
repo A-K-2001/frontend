@@ -11,6 +11,7 @@ import { Link, useNavigate } from "react-router-dom";
 const Container = styled.div`
 
     margin-top: 10px;
+    
 
 `;
 const Heading = styled.h1`
@@ -32,6 +33,7 @@ const Card = styled.div`
     padding: 1px;
     transform: translate(0, 30px);
     width: 100%;
+    background-color: #feffde;
   
 
 `;
@@ -60,7 +62,7 @@ export default function MultiActionAreaCard(details) {
 
     const handleclick = () => {
 
-        navigate(`investorprofile/${details.details._id}`)
+        navigate(`/investorprofile/${details.details._id}`)
 
     }
 

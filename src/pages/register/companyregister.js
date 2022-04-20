@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import {
     Form,
     Row,
-    C
+    col
 } from 'react-bootstrap'
 import { logincompany, logininvestor } from '../../redux/apiCalls';
 import { useDispatch } from 'react-redux';
