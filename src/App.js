@@ -21,7 +21,6 @@ import Profile from './pages/OwnProfile/Profile';
 
 
 
-
 function App() {
 
 
@@ -47,8 +46,8 @@ function App() {
         <Route path="companyprofile/:id" element={<Company />} />
         <Route path="investorprofile/:id" element={<Investorprofile />} />
         <Route path="/profile" element={<Profile />} />
-
-
+        
+ 
 
         <Route path="/register/investor" element={<Investorregister />} />
         <Route path="/chat" element={<Chat></Chat>}/>

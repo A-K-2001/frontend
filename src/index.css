@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fvisme.co%2Fblog%2Fsimple-backgrounds%2F&psig=AOvVaw1DQUwTxd1GZaFk1S-bMLMM&ust=1650400863111000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCPi7psS8nvcCFQAAAAAdAAAAABAF";
+  /* background-image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fvisme.co%2Fblog%2Fsimple-backgrounds%2F&psig=AOvVaw1DQUwTxd1GZaFk1S-bMLMM&ust=1650400863111000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCPi7psS8nvcCFQAAAAAdAAAAABAF"; */
 }
 
 code {
@@ -14,8 +14,12 @@ code {
 }
 
 #root {
-
-  background: #ddffbc8e;
-  /* background-image: url("https://www.thebalance.com/thmb/7dsJGxZTatONVXqA49JishW0Mjs=/3000x2000/filters:fill(auto,1)/the-five-types-of-assets-you-might-own-when-you-invest-d636d9b641f24003ab0149b2fcf84aec.png"); */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+background-color: white;
+  /* background: #1214118e; */
+  /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZZPu1PJjXgdZ8rFcPuqALjxp_w5t8VDGZvw&usqp=CAU"); */
 
 }

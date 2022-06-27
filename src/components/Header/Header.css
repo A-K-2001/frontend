@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #feffde !important;
+  background-color: #3e3e4b !important;
   width: auto;
   color: white !important;
   box-shadow: 2px 2px 2px 2px #52734d;
@@ -7,14 +7,14 @@
 }
 .nav-cal {
   width: auto;
-  color: #52734d !important;
-  font-size: 16px;
-  font-weight: bold;
+  color: white !important;
+  font-size: 20px;
+  font-weight: 1.5px;
 }
 
 #username,
 #adminmenu {
-  color: #52734d !important;
+  color: white !important;
   font-size: 16px;
 }
 
@@ -38,14 +38,14 @@
   .cart {
     float: right !important;
     margin-left: 35rem !important;
-    color: #52734d !important;
-    font-size: 16px !important;
-    font-size: 16px;
+     color: white !important;
+    font-size: 20px;
+    font-weight: 1.5px;
   }
   .remove-space {
     float: right !important;
     margin-left: 50rem !important;
-    color: #52734d !important;
+    color:#3e3e4b !important;
     font-size: 16px !important;
   }
   .nav-cal {
@@ -62,7 +62,7 @@
 
 .logoimg{
 
-  color: #52734d !important;
-  background-color: #52734d !important;
+  color: #020801 !important;
+  background-color: #ebebeb !important;
 
 }

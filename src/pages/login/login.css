@@ -10,7 +10,17 @@ body {
   }
   
   /* Remove extra left and right margins, due to padding */
-  .row {margin: 0 -5px;}
+  .row {
+    background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  background-image: url("https://img.freepik.com/free-photo/investor-double-exposure-image-investor-business-man-handshake-with-partner-successful-meeting-deal-with-during-sunrise-cityscape-background-investment-partnership-teamwork-concept_33829-388.jpg?w=2000");
+
+    margin: 0 -5px;
+    
+  
+  }
   
   /* Clear floats after the Cumns */
   .row:after {
@@ -41,8 +51,7 @@ body {
   }
 
   .coll{
-    background-color: #ddffbc91;
-  }
+     }
  
 
   
